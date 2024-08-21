@@ -16,7 +16,7 @@ public class Usuario {
     private UUID id;
 
     private String nombre;
-    private String correo;
+    private String email;
     private String password;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)

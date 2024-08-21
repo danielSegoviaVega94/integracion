@@ -11,10 +11,10 @@ public interface UsuarioMapper {
     UsuarioMapper INSTANCE = Mappers.getMapper(UsuarioMapper.class);
 
     @Mapping(source = "nombre", target = "name")
-    @Mapping(source = "correo", target = "email")
+    @Mapping(source = "email", target = "email")
     UsuarioDTO toDto(Usuario usuario);
 
     @Mapping(source = "name", target = "nombre")
-    @Mapping(source = "email", target = "correo")
+    @Mapping(source = "email", target = "email")
     Usuario toEntity(UsuarioDTO usuarioDTO);
 }

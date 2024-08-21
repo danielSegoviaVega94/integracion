@@ -67,7 +67,7 @@ public class AuthController {
 
             String jwt = tokenProvider.generateToken(authentication);
 
-            Usuario usuario = usuarioRepository.findByCorreo(loginRequest.getCorreo()).orElseThrow(() ->
+            Usuario usuario = usuarioRepository.findByEmail(loginRequest.getCorreo()).orElseThrow(() ->
                     new IllegalArgumentException("Usuario no encontrado"));
             usuario.setLastLogin(LocalDateTime.now());
             usuarioRepository.save(usuario);
@@ -92,14 +92,14 @@ public class AuthController {
             return ResponseEntity.badRequest().body(Map.of("mensaje", "El formato de la contraseña es inválido. " + passwordRequirements));
         }
 
-        if (usuarioRepository.existsByCorreo(signUpRequest.getCorreo())) {
+        if (usuarioRepository.existsByEmail(signUpRequest.getCorreo())) {
             return ResponseEntity.badRequest().body(Map.of("mensaje", "Error: El correo ya está en uso!"));
         }
 
         try {
             Usuario usuario = new Usuario();
             usuario.setNombre(signUpRequest.getNombre());
-            usuario.setCorreo(signUpRequest.getCorreo());
+            usuario.setEmail(signUpRequest.getCorreo());
             usuario.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
             usuario.setCreated(LocalDateTime.now());
             usuario.setModified(LocalDateTime.now());

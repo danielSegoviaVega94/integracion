@@ -27,8 +27,8 @@ public class CustomUserDetailsServiceTest {
     @Test
     public void testLoadUserByUsername() {
         Usuario usuario = new Usuario();
-        usuario.setCorreo("test@example.com");
-        when(usuarioRepository.findByCorreo("test@example.com")).thenReturn(Optional.of(usuario));
+        usuario.setEmail("test@example.com");
+        when(usuarioRepository.findByEmail("test@example.com")).thenReturn(Optional.of(usuario));
 
         UserDetails userDetails = customUserDetailsService.loadUserByUsername("test@example.com");
 
@@ -37,7 +37,7 @@ public class CustomUserDetailsServiceTest {
 
     @Test
     public void testLoadUserByUsernameNotFound() {
-        when(usuarioRepository.findByCorreo("test@example.com")).thenReturn(Optional.empty());
+        when(usuarioRepository.findByEmail("test@example.com")).thenReturn(Optional.empty());
 
         assertThrows(UsernameNotFoundException.class, () -> customUserDetailsService.loadUserByUsername("test@example.com"));
     }

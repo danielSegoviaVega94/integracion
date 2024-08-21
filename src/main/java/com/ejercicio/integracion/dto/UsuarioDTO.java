@@ -2,6 +2,7 @@ package com.ejercicio.integracion.dto;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,4 +14,7 @@ public class UsuarioDTO {
     private List<TelefonoDTO> phones;
     private String token;
     private boolean isActive;
+    private LocalDateTime created;
+    private LocalDateTime modified;
+    private LocalDateTime lastLogin;
 }

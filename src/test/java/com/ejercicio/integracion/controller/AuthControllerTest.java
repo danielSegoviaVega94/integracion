@@ -57,11 +57,11 @@ public class AuthControllerTest {
         LoginRequest loginRequest = new LoginRequest("test@example.com", "password");
         Authentication authentication = mock(Authentication.class);
         Usuario usuario = new Usuario();
-        usuario.setCorreo("test@example.com");
+        usuario.setEmail("test@example.com");
 
         when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class))).thenReturn(authentication);
         when(tokenProvider.generateToken(authentication)).thenReturn("mockedJwtToken");
-        when(usuarioRepository.findByCorreo(anyString())).thenReturn(Optional.of(usuario));
+        when(usuarioRepository.findByEmail(anyString())).thenReturn(Optional.of(usuario));
         when(usuarioRepository.save(any(Usuario.class))).thenReturn(usuario);
 
         ResponseEntity<?> responseEntity = authController.authenticateUser(loginRequest);
@@ -76,12 +76,12 @@ public class AuthControllerTest {
     public void testRegisterUser_Success() {
         SignUpRequest signUpRequest = new SignUpRequest("Test User", "test@example.com", "password", new ArrayList<>());
         Usuario usuario = new Usuario();
-        usuario.setCorreo("test@example.com");
+        usuario.setEmail("test@example.com");
         usuario.setNombre("Test User");
 
         when(validationUtils.isValidEmail(anyString())).thenReturn(true);
         when(validationUtils.isValidPassword(anyString())).thenReturn(true);
-        when(usuarioRepository.existsByCorreo(anyString())).thenReturn(false);
+        when(usuarioRepository.existsByEmail(anyString())).thenReturn(false);
         when(passwordEncoder.encode(anyString())).thenReturn("encodedPassword");
         when(usuarioRepository.save(any(Usuario.class))).thenReturn(usuario);
 
@@ -100,7 +100,7 @@ public class AuthControllerTest {
 
         when(validationUtils.isValidEmail(anyString())).thenReturn(true);
         when(validationUtils.isValidPassword(anyString())).thenReturn(true);
-        when(usuarioRepository.existsByCorreo(anyString())).thenReturn(true);
+        when(usuarioRepository.existsByEmail(anyString())).thenReturn(true);
 
         ResponseEntity<?> responseEntity = authController.registerUser(signUpRequest);
 

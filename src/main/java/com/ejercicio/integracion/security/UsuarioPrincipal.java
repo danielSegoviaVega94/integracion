@@ -29,7 +29,7 @@ public class UsuarioPrincipal implements UserDetails {
         return new UsuarioPrincipal(
                 usuario.getId(),
                 usuario.getNombre(),
-                usuario.getCorreo(),
+                usuario.getEmail(),
                 usuario.getPassword(),
                 usuario.getPhones()
         );

@@ -18,7 +18,7 @@ public class UsuarioPrincipalTest {
         Usuario usuario = new Usuario();
         usuario.setId(id);
         usuario.setNombre("TestUser");
-        usuario.setCorreo("test@example.com");
+        usuario.setEmail("test@example.com");
         usuario.setPassword("password");
         usuario.setPhones(new ArrayList<>());
 
