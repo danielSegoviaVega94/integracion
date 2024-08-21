@@ -85,6 +85,11 @@ Java Development Kit (JDK) 17: Para ejecutar la aplicación Spring Boot.
 
 ## Notas
 - La contraseña debe tener al menos 8 caracteres, incluyendo una mayúscula y un carácter especial.
+- Se ocupo MapStruct para mapear entidades y DTO.
+- Se ocupo lombok para disminuir codigo repetetivo.
+- Autenticación y Autorización con JWT (JSON Web Tokens).
+- Documentacion con Springdoc OpenAPI.
+- Se ocupo docker para facilitar el uso.
 
 ## Diagramas
 ![img.png](img.png)
